@@ -1,0 +1,92 @@
+/* BUTTONS (boxed) */
+.button {
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  background-color: #0004;
+  border-radius: .1rem;
+  border: var(--color) solid 0.15rem;
+  color: var(--color);
+  padding: .5rem;
+  font-weight: 600;
+}
+
+.neon_button {
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  background-color: #0004;
+  border-radius: .1rem;
+  border: var(--color) solid 0.15rem;
+  color: var(--color);
+  padding: .5rem;
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+}
+
+.neon_button svg {
+  margin: 0;
+  fill: var(--color);
+  transition: all 200ms ease-in-out;
+}
+
+/* hover */
+.button:hover,
+.neon_button:hover {
+  border-radius: .5rem;
+  background-color: #0008;
+}
+
+.neon_button:hover {
+  border-color: var(--light);
+  color: var(--light);
+  text-shadow: 0 0 .3rem var(--color);
+  box-shadow: 0 0 .3rem var(--color), 0 0 .3rem var(--color) inset;
+}
+
+.neon_button:hover svg {
+  fill: var(--light);
+  filter: drop-shadow(0 0 .3rem var(--color));
+}
+
+/* LINKS (no borders)*/
+
+.link {
+  cursor: pointer;
+  border-bottom: var(--color) solid 0.1rem;
+  color: var(--color);
+  padding: .2rem;
+  padding-bottom: 0;
+  font-weight: 600;
+}
+
+.neon_link {
+  cursor: pointer;
+  border-bottom: var(--color) solid 0.1rem;
+  color: var(--color);
+  padding: .2rem;
+  padding-bottom: 0;
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+}
+
+.neon_link:hover {
+  border-color: var(--light);
+  color: var(--light);
+  text-shadow: 0 0 .3rem var(--color);
+  box-shadow: 0 .3rem .3rem -0.3rem var(--color),
+    0 -0.3rem .3rem -0.3rem var(--color) inset;
+}
+
+.neon_link:hover svg {
+  fill: var(--light);
+  filter: drop-shadow(0 0 .3rem var(--color));
+}
+
+.neon_link svg {
+  margin: 0;
+  fill: var(--color);
+  transition: all 200ms ease-in-out;
+}

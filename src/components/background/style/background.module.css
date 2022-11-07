@@ -1,0 +1,43 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 999;
+  animation: infinite animation 8s;
+}
+
+@keyframes animation {
+  0% {
+    opacity: 0.6;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@media screen and (max-aspect-ratio: 3 / 2) {
+
+  .background,
+  .overlay {
+    width: auto;
+    height: 100%;
+  }
+}

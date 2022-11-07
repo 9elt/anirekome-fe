@@ -1,0 +1,70 @@
+.container {
+  width: 100%;
+  max-width: 24rem;
+  text-align: center;
+  position: relative;
+}
+
+/* image */
+.image_container {
+  width: 95%;
+  max-width: 16rem;
+  min-height: 22rem;
+  margin-inline: auto;
+  overflow: hidden;
+  box-shadow: #9b998e69 0 0 2rem 3px;
+  border: #fffef300 solid 3px;
+}
+
+.image_container > img {
+  display: block;
+  width: 100%;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* score */
+
+.score_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score_container h5 {
+    font-size: 0.8rem;
+    line-height: 1;
+    padding: 0.5rem;
+    color: #fffe;
+    text-shadow: 0 0 8px #000;
+    border-radius: 0.25rem;
+    border: transparent solid 0.15rem;
+    outline: none;
+    /* background-color: #00000045; */
+}
+
+.score {
+  padding: .5rem;
+  padding-block: .25rem;
+  margin: .5rem;
+  border: .15rem solid var(--light);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 4px 1px var(--color), inset 0 0 1px 1px var(--color);
+  text-shadow: 0 0 4px var(--color);
+  color: var(--light);
+}
+
+/* genres */
+
+.genres_container {
+  display: flex;
+  justify-content: center;
+}
+
+.genre {
+  color: var(--color);
+  text-shadow: 0 0 8px #000;
+  margin: .25rem;
+  font-size: 0.8rem;
+}

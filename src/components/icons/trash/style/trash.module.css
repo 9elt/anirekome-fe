@@ -1,0 +1,9 @@
+.trash:hover > .trash_cover {
+  transform: rotate(-15deg) translateY(-12px);
+}
+
+.trash_cover {
+  transform-origin: center;
+  transform-box: fill-box;
+  transition: transform 100ms ease-in-out;
+}

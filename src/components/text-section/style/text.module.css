@@ -1,0 +1,26 @@
+.container {
+  margin-top: 6rem;
+  max-width: 65ch;
+  width: 100%;
+  margin-inline: auto;
+  min-height: 100vh;
+}
+
+.text {
+  padding: 2rem;
+  padding-bottom: 5rem;
+  border-radius: 1rem;
+  color: #fff;
+  background-color: #1c3e54;
+  background-color: #1c3e54ed;
+  background-image: linear-gradient(90deg, #52220033 30%, #52000033 60%, transparent);
+}
+
+.text p {
+  margin-block: 1rem;
+}
+
+.text ul {
+  padding-left: 2rem;
+  list-style: circle;
+}

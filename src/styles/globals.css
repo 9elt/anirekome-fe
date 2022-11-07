@@ -1,0 +1,87 @@
+:root {
+  --color: #fff;
+  --light: #fff;
+}
+
+html {
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+
+  background-color: #000000;
+  background-image: linear-gradient(10deg, #ff3b0073, #0088ff73);
+  background-image: linear-gradient(35deg, #8e503873, #b2dbff73);
+
+  color: #fff;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2e4a72;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #133253;
+  border: 3px solid #2e4a72;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sel-bg);
+}
+
+.container-64 {
+  max-width: 64rem;
+  margin-inline: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container-84 {
+  max-width: 84rem;
+  margin-inline: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.center {
+  justify-content: center;
+}

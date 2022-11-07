@@ -1,0 +1,4 @@
+.neon > * {
+  color: var(--light);
+  text-shadow: 0 0 .3rem var(--color);
+}

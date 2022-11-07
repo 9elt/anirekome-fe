@@ -1,0 +1,47 @@
+.full_logo_hair {
+  fill: none;
+  stroke: #34a0ff;
+  filter: drop-shadow(0 0 3px #34a0ff);
+  stroke-width: 1;
+  stroke-miterlimit: 10;
+}
+
+.full_logo_body {
+  fill: none;
+  stroke: #fff;
+  filter: drop-shadow(0 0 3px #fff);
+  stroke-width: 0.7;
+  stroke-miterlimit: 10;
+}
+
+.full_logo_dress {
+  fill: none;
+  stroke: #34a0ff;
+  filter: drop-shadow(0 0 3px #34a0ff);
+  stroke-width: 0.7;
+  stroke-miterlimit: 10;
+}
+
+.small_logo_hair {
+  fill: none;
+  stroke: #34a0ff;
+  filter: drop-shadow(0 0 1px #34a0ff);
+  stroke-width: 1;
+  stroke-miterlimit: 10;
+}
+
+.small_logo_body {
+  fill: none;
+  stroke: #fff;
+  filter: drop-shadow(0 0 10px #fff);
+  stroke-width: 0.7;
+  stroke-miterlimit: 10;
+}
+
+.small_logo_dress {
+  fill: none;
+  stroke: #34a0ff;
+  filter: drop-shadow(0 0 1px #34a0ff);
+  stroke-width: 0.7;
+  stroke-miterlimit: 10;
+}

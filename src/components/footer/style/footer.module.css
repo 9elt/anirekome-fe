@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer > * {
+  margin: 0.5rem;
+}
+
+.footer svg {
+  width: 1rem;
+}

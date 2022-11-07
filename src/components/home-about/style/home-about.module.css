@@ -1,0 +1,13 @@
+.container {
+  max-width: 55ch;
+  margin-right: 5rem;
+  text-align: justify;
+}
+
+.container h2 {
+  margin-block: 1rem;
+}
+
+.container p {
+  margin-block: 0.8rem;
+}
