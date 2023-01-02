@@ -1,7 +1,11 @@
-export default function GitHubIcon() {
+import { CSSProperties } from 'react'
+
+export default function GitHubIcon(props: {
+  style?: CSSProperties;
+}) {
 
   return (
-    <svg x="0px" y="0px" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <svg style={props.style} x="0px" y="0px" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
       <path d="M150.5,20.4c-76.3,0-138.2,61.8-138.2,138.2c0,61.1,39.5,112.8,94.5,131.1c6.9,1.2,9.5-2.9,9.5-6.6
         c0-3.3-0.2-14.2-0.2-25.7c-34.7,6.4-43.7-8.5-46.5-16.2c-1.6-4-8.3-16.2-14.2-19.5c-4.8-2.6-11.7-9-0.2-9.2
         c10.9-0.2,18.7,10,21.2,14.2c12.4,20.9,32.3,15,40.2,11.4c1.2-9,4.8-15,8.8-18.5c-30.7-3.5-62.9-15.4-62.9-68.2

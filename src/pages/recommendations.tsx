@@ -9,7 +9,7 @@ import { useRecoilState } from 'recoil';
 import Recommendation from "../components/recommendation/recommendation";
 
 //  types
-import type { userAnimeRecosType, userUserRecosType } from '../global-state/user';
+import type { Reko } from "src/api/recommendations/types";
 
 export default function Recommendations() {
 
@@ -19,19 +19,20 @@ export default function Recommendations() {
 
   useEffect(() => { if (!user.recommendations) router.push('/connect'); }, []);
 
-  const recommendations: Array<userAnimeRecosType & userUserRecosType> = [];
-
-  user.recommendations?.anime.forEach((reco) => {
-    const u = user.recommendations?.users[reco.user];
-    if (reco && u) recommendations.push({...reco, ...u});
-  });
+  const recommendations: Reko[] = user.recommendations?.recommendations || [];
+  const users = user.recommendations?.users || [];
+  const getRekoUsers = (r?: Reko): string[] => {
+    return r?.users.map(u => users[u]) || []
+  };
 
   return (
-
-    <div className="container-84 center no-overflow">
-
-      {recommendations.map((reco, i) => <Recommendation key={i} {...reco} />)}
-
+    <div className="container-84 center no-overflow wrap">
+      {recommendations?.map((reko, i) => {
+        return i < 12
+          ? <Recommendation key={i} {...{ reko: reko, users: getRekoUsers(reko) }}/>
+          : <></>
+      }
+      )}
     </div>
   )
 }

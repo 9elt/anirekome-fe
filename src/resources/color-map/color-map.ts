@@ -26,7 +26,11 @@ export const colorMap = {
   'MAL': {
     normal: '#87acff',
     light: '#abc4ff',
-  }
+  },
+  'black': {
+    normal: '#777',
+    light: '#aaa',
+  },
 }
 
 export type colorsType = 'white' | 'blue' | 'red' | 'orange' | 'yellow' | 'green' | 'MAL';

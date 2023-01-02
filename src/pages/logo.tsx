@@ -1,4 +1,4 @@
-import FullLogo from "../components/logo/full-logo"
+import FullLogo from "../components/logo/logo"
 
 export default function Logo() {
 

@@ -1,45 +1,14 @@
 import { atom } from 'recoil';
+import { APIresponse } from '../api/recommendations/types';
 
 export interface userStateType {
-  name: string;
-  statistics?: userStatsType;
-  recommendations?: userRecosType;
+  user_name: string;
+  recommendations?: APIresponse;
 }
 
-export interface userStatsType {
-  list: number;
+const userInitialState: userStateType = {
+  user_name: '',
 }
-
-export interface userRecosType {
-  users: userUserRecosType[];
-  anime: userAnimeRecosType[];
-}
-
-export interface userAnimeRecosType {
-  id: number;
-  title: string;
-  picture: string;
-  genres: string[];
-  score: { val: number; s: number; d: number };
-  user: number;
-}
-
-export interface userUserRecosType {
-  name: string;
-  offuscated: boolean;
-  affinity: {
-    val: number;
-    s: number;
-    d: number;
-  };
-  shared: {
-    val: number;
-    list: number;
-    to: number;
-  };
-}
-
-const userInitialState: userStateType = { name: '' }
 
 export const userState = atom({
   key: 'userState',

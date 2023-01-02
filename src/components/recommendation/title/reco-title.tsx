@@ -4,7 +4,7 @@ export default function RecoTitle({ title }: {
   title: string,
 }) {
 
-  title = title.split('').length > 32 ? title.slice(0, 28) + '...' : title;
+  title = title?.length > 24 ? `${title.slice(0, 21)}...` : title;
 
   return (
     <NeonText color='blue'>

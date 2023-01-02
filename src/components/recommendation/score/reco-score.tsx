@@ -28,8 +28,8 @@ export default function RecoScore({ score }: {
 
   return (
     <div className={styles.score_container} style={color}>
+      <h3 className={styles.score}>{score / 100}</h3>
       <h5>SCORE PREDICTION</h5>
-      <h3 className={styles.score}>{score}</h3>
     </div>
   )
 }

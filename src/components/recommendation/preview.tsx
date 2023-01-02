@@ -1,18 +1,17 @@
 // components
 import NeonButton from "../buttons/neon-button";
 import Recommendation from "./recommendation"
+import type { Reko } from "src/api/recommendations/types";
 
-export default function Preview(recommendation: any) {
-
-  const reco = { ...recommendation, isPreview: true };
+export default function Preview({reko, users}: {reko: Reko, users: string[]}) {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
 
-      <Recommendation {...reco} />
+      <Recommendation {...{reko: reko, users: users, isPreview: true}} />
 
       <NeonButton href="/recommendations" color="yellow" style={{marginTop: '1rem'}}>
-        {'RECOMMENDATIONS >'}
+        {'Your Recommendations >'}
       </NeonButton>
 
     </div>

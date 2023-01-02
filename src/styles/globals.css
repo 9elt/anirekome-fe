@@ -85,3 +85,9 @@ a {
 .center {
   justify-content: center;
 }
+
+.wrap {
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+}

@@ -10,8 +10,8 @@ export default function Checkbox({ name, color, error, children, handleChange }:
 }) {
 
   const colorVar = !error ? {
-    "--color": colorMap[color || 'blue'].normal,
-    "--light": colorMap[color || 'blue'].light,
+    "--color": colorMap[color || 'yellow'].normal,
+    "--light": colorMap[color || 'yellow'].light,
   } as React.CSSProperties : {
     "--color": colorMap['red'].normal,
     "--light": colorMap['red'].light,

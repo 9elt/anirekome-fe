@@ -3,56 +3,229 @@
   max-width: 24rem;
   text-align: center;
   position: relative;
+  margin-block: 2rem;
 }
 
 /* image */
-.image_container {
+.outer_container {
+  position: relative;
   width: 95%;
   max-width: 16rem;
-  min-height: 22rem;
+  height: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-inline: auto;
-  overflow: hidden;
   box-shadow: #9b998e69 0 0 2rem 3px;
   border: #fffef300 solid 3px;
 }
 
-.image_container > img {
+.image_container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(
+    100% 0,
+
+    74% 0%,
+    100% 19%,
+
+    100% 81%,
+    74% 100%,
+
+    26% 100%,
+    0% 81%,
+
+    0% 19%,
+    26% 0%,
+    0% 0%,
+
+    0 100%,
+    0 0
+  );
+}
+
+.image_container img {
   display: block;
   width: 100%;
   opacity: 0.8;
   pointer-events: none;
   z-index: -1;
+  transition: all .4s ease-in-out;
+  pointer-events: none;
 }
 
-/* score */
+.mal_link {
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  transition: all .4s ease-in-out;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reko_users_title {
+  margin-top: -2rem;
+}
+
+.reko_users_subtitle {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  padding: .15rem .75rem;
+  background-color: #0003;
+  border-radius: .25rem;
+}
+
+.reko_users_container {
+  display: flex;
+  margin-inline: auto;
+}
+
+.reko_users,
+.reko_affinity {
+  padding: .15rem .75rem;
+  margin-block: .1rem;
+  border-radius: .25rem;
+  width: fit-content;
+  color: #000a;
+  background-color: #ffebd7;
+  box-shadow: 0 0 3px #ffa34d;
+  transition: all 0.15s ease-in-out;
+}
+
+.reko_users {
+  width: 8rem;
+}
+
+.reko_affinity {
+  margin-left: .3rem;
+  color: #fffa;
+  background-color: #0003;
+  box-shadow: 0 0 3px #0001;
+}
+
+.reko_users_container:hover .reko_users {
+  background-color: #f4faff;
+  box-shadow: 0 0 3px #34a0ff;
+}
+
+.reko_users_container:hover .reko_affinity {
+  color: #fff;
+  background-color: #0005;
+}
+
+.image_container:hover img {
+  opacity: 0.1;
+  transform: scale(1.4);
+  filter: grayscale(1);
+}
+
+.image_container:hover .mal_link {
+  opacity: 1;
+}
 
 .score_container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.score_container h5 {
-    font-size: 0.8rem;
-    line-height: 1;
-    padding: 0.5rem;
-    color: #fffe;
-    text-shadow: 0 0 8px #000;
-    border-radius: 0.25rem;
-    border: transparent solid 0.15rem;
-    outline: none;
-    /* background-color: #00000045; */
+.score_container .border,
+.delete_container .border,
+.details_container .border,
+.pin_container .border {
+  width: 3.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  fill: none;
+  stroke: var(--light);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px var(--color));
 }
 
+.pin_container {
+  cursor: pointer;
+}
+
+.pin_container h4,
+.pin_container svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.details_container h4,
+.details_container svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pin_container svg {
+  fill: var(--light);
+  filter: drop-shadow(0 0 2px var(--color));
+  font-size: .9rem;
+}
+
+.pin_container svg:not(.border) {
+  transform: rotate(-12deg) translate(1px, 2px);
+}
+
+.details_container h4 {
+  padding: .3rem 0.2rem;
+  font-size: .9rem;
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.delete_container svg {
+  fill: var(--light);
+  filter: drop-shadow(0 0 2px var(--color));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.delete_container svg:not(.border) {
+  transform: rotate(-10deg) translate(1px, -2px);
+}
+
+.svg_arr {
+  pointer-events: none;
+  fill: var(--light);
+  transition: all 0.1s ease-in-out;
+}
+
+.details_container:hover .svg_arr {
+  transform: translate(2px, -2px);
+  /* filter: drop-shadow(0 0 3px var(--color)); */
+}
+
+
 .score {
-  padding: .5rem;
-  padding-block: .25rem;
-  margin: .5rem;
-  border: .15rem solid var(--light);
-  border-radius: 0.5rem;
-  box-shadow: 0 0 4px 1px var(--color), inset 0 0 1px 1px var(--color);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 1.6rem;
+  padding: .7rem;
+  padding-block: .3rem;
   text-shadow: 0 0 4px var(--color);
   color: var(--light);
+  transform: rotate(3deg) translate(1px, 2px);
 }
 
 /* genres */

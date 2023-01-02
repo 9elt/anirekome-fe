@@ -1,0 +1,12 @@
+.save:hover > .save_top {
+  transform: translateX(-32px);
+}
+
+.save {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.save_top {
+  transition: transform 100ms ease-in-out;
+}

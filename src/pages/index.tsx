@@ -11,13 +11,17 @@ export default function Home() {
 
   const [user] = useRecoilState(userState);
 
-  const preview = user.recommendations ? user.recommendations.anime[0] : {};
+  const preview = user.recommendations?.recommendations[0];
+  const rekousers = preview?.users.map(u => user.recommendations?.users[u] || '') || [];
 
   return (
     <div className="container-64 center">
 
       <HomeAbout />
-      {user.recommendations ? <Preview {...preview} /> : <ConnectForm />}
+      {preview
+        ? <Preview reko={preview} users={rekousers} />
+        : <ConnectForm />
+      }
 
     </div>
   )
