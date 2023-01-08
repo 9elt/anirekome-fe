@@ -28,8 +28,20 @@ interface RekoRelated {
     users: number[];
   }
   
+  export interface UsersInfo {
+    user_name: string; 
+    affinity: number;
+  }
+
+  export interface APIrequest {
+    accuracy?: number ;
+    banned_ids?: number[];
+    banned_users?: string[];
+    force_list_update?: boolean;
+  }
+
   export interface APIresponse {
-    passages: number,
-    recommendations: Reko[],
-    users: string[]
+    next_request: APIrequest;
+    recommendations: Reko[];
+    users: UsersInfo[];
   }

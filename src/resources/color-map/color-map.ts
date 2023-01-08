@@ -1,3 +1,10 @@
+export function color(color: colorsType) {
+  return {
+    "--color": colorMap[color].normal,
+    "--light": colorMap[color].light,
+  } as React.CSSProperties;
+}
+
 export const colorMap = {
   'white': {
     normal: '#fff',
@@ -33,5 +40,5 @@ export const colorMap = {
   },
 }
 
-export type colorsType = 'white' | 'blue' | 'red' | 'orange' | 'yellow' | 'green' | 'MAL';
 export type colorMapType = typeof colorMap;
+export type colorsType = keyof colorMapType;

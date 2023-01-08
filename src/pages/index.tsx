@@ -6,23 +6,43 @@ import { useRecoilState } from 'recoil';
 import HomeAbout from "../components/home-about/home-about"
 import ConnectForm from "../components/connect-form/connect-form"
 import Preview from "../components/recommendation/preview";
+import Loader from "src/components/loader/loader";
+
+import { try_reconnect } from "src/session/reconnect";
+import { useEffect, useState } from "react";
 
 export default function Home() {
 
-  const [user] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
+  const [sessionCheck, setSessionCheck] = useState(false);
 
-  const preview = user.recommendations?.recommendations[0];
-  const rekousers = preview?.users.map(u => user.recommendations?.users[u] || '') || [];
+  useEffect(() => {
+    if (!user.api) {
+      const connect = async () => {
+        let res = await try_reconnect()
+        setUser(res)
+        setSessionCheck(true)
+      }
+      connect()
+    } else {
+      setSessionCheck(true)
+    }
+  }, [])
+
+  const preview = user.api?.recommendations[0];
+  const rekousers = preview?.users.map(u => user.api?.users[u] || { user_name: '', affinity: 0 }) || [];
 
   return (
     <div className="container-64 center">
-
-      <HomeAbout />
-      {preview
-        ? <Preview reko={preview} users={rekousers} />
-        : <ConnectForm />
-      }
-
+        <>
+          <HomeAbout />
+          {sessionCheck 
+            ? preview
+                ? <Preview reko={preview} users={rekousers} />
+                : <ConnectForm />
+            : <Loader />
+          }
+        </>
     </div>
   )
 }

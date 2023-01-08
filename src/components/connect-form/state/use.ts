@@ -2,13 +2,14 @@ import { useState } from "react"
 import { useRouter } from "next/router";
 
 //  global state
-import { userState } from "../../../global-state/user";
+import { userState } from "src/global-state/user";
 import { useRecoilState } from 'recoil';
 
 // api
-import getRecommendationsApi from "../../../api/recommendations/get-recomendations";
-import { ApiError } from "../../../api/recommendations/get-recomendations";
+import { formApi } from "src/api/recommendations/get-recomendations";
+import { ApiError } from "src/api/recommendations/get-recomendations";
 import type { formErrors, formStateType } from "./types";
+import { setSession } from "src/session/use";
 
 export default function useFormState() {
 
@@ -79,14 +80,19 @@ export default function useFormState() {
     setStatus(true);
 
     try {
-      const res = await getRecommendationsApi(state.values);
+      const res = await formApi(state.values);
 
       setUser({
         user_name: state.values.user_name,
-        recommendations: res,
+        api: res,
       });
 
-      // router.push('/recommendations');
+      setSession({
+        user_name: state.values.user_name,
+        next_request: res.next_request,
+      });
+
+      //router.push('/recommendations');
 
     } catch (e) {
 

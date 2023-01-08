@@ -1,55 +1,33 @@
 import styles from '../style/recom.module.css'
 
-import { colorMap, colorsType } from 'src/resources/color-map/color-map'
+import { colorsType, color } from 'src/resources/color-map/color-map'
 import TrashIcon from 'src/components/icons/trash/trash-icon'
 import SaveIcon from 'src/components/icons/save/save-icon'
 import Link from 'src/components/buttons/link'
-
-import { useRouter } from 'next/router'
+import type { UsersInfo } from 'src/api/recommendations/types'
 
 export default function RecoImage({ url, score, id, users }: {
   url: string,
   score: number,
   id: number,
-  users: string[]
+  users: UsersInfo[]
 }) {
 
-  const router = useRouter();
-
-  const colors = [
-    ['red', 6,],
-    ['orange', 7,],
-    ['yellow', 8,],
-    ['blue', 9,],
-    ['green', 10,],
-  ];
-
-  let sel = 'blue';
-  for (const i in colors) {
-    if (parseInt((score / 100).toString()) > colors[i][1]) { continue }
-    sel = colors[i][0] as string;
-    break;
+  const scoreColors = {
+    0: 'red',
+    1: 'red',
+    2: 'red',
+    3: 'red',
+    4: 'red',
+    5: 'red',
+    6: 'orange',
+    7: 'yellow',
+    8: 'blue',
+    9: 'green',
+    10: 'green',
   }
 
-  const score_color = {
-    "--color": colorMap[sel as colorsType].normal,
-    "--light": colorMap[sel as colorsType].light,
-  } as React.CSSProperties;
-
-  const trash_color = {
-    "--color": colorMap.red.normal,
-    "--light": colorMap.red.light,
-  } as React.CSSProperties;
-
-  const details_color = {
-    "--color": colorMap.blue.normal,
-    "--light": colorMap.blue.light,
-  } as React.CSSProperties;
-
-  const pin_color = {
-    "--color": colorMap[1==1 ? "black" : "yellow"].normal,
-    "--light": colorMap[1==1 ? "black" : "yellow"].light,
-  } as React.CSSProperties;
+  const score_color = color(scoreColors[score as keyof typeof scoreColors] as colorsType)
 
   return (
     <div className={styles.outer_container}>
@@ -60,10 +38,10 @@ export default function RecoImage({ url, score, id, users }: {
           <h3 className={styles.reko_users_title}>recommended by</h3>
           <p className={styles.reko_users_subtitle}>username | affinity</p>
           {users.map((user, i) =>
-            <Link key={i} href={`https://myanimelist.net/profile/${user}`}>
+            <Link key={i} href={`https://myanimelist.net/profile/${user.user_name}`}>
               <div className={styles.reko_users_container}>
-                <h3 className={styles.reko_users}>{user.length > 12 ? `${user.slice(0,10)}..` : user}</h3>
-                <h3 className={styles.reko_affinity}>87<span style={{ fontSize: '.8rem' }}>%</span></h3>
+                <h3 className={styles.reko_users}>{user.user_name.length > 14 ? `${user.user_name.slice(0, 12)}..` : user.user_name}</h3>
+                <h3 className={styles.reko_affinity}>{parseInt(`${user.affinity / 10}`)}<span style={{ fontSize: '.8rem' }}>%</span></h3>
               </div>
             </Link>
           )}
@@ -75,11 +53,11 @@ export default function RecoImage({ url, score, id, users }: {
           <svg className={styles.border} viewBox='0 0 32 32'>
             <path d='M30,30 30,2 2,30 30,30Z' />
           </svg>
-          <h3 className={styles.score}>{parseInt((score / 100).toString())}</h3>
+          <h3 className={styles.score}>{score}</h3>
         </div>
       </div>
 
-      <div style={trash_color}>
+      <div style={color('red')}>
         <div className={styles.delete_container} >
           <svg className={styles.border} viewBox='0 0 32 32'>
             <path d='M2,2 2,30 30,30 2,2Z' />
@@ -88,7 +66,7 @@ export default function RecoImage({ url, score, id, users }: {
         </div>
       </div>
 
-      <div style={details_color}>
+      <div style={color('blue')}>
         <div className={styles.details_container} >
           <svg className={styles.border} viewBox='0 0 32 32'>
             <path d='M2,2 30,30 30,2 2,2Z' />
@@ -100,7 +78,7 @@ export default function RecoImage({ url, score, id, users }: {
         </div>
       </div>
 
-      <div style={pin_color}>
+      <div style={color('yellow')}>
         <div className={styles.pin_container} >
           <svg className={styles.border} viewBox='0 0 32 32'>
             <path d='M2,2 30,2 2,30 2,2Z' />

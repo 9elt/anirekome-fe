@@ -231,6 +231,9 @@
 /* genres */
 
 .genres_container {
+  max-width: 20rem;
+  margin-inline: auto;
+  flex-wrap: wrap;
   display: flex;
   justify-content: center;
 }

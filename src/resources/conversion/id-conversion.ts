@@ -1,10 +1,10 @@
-export const statusIDs = {
+export const statusesNames = {
     1: "finished airing",
     2: "currently airing",
     3: "not yet aired",
 }
 
-export const ratingIDs = {
+export const ratingsNames = {
     1: "g",
     2: "pg",
     3: "pg 13",
@@ -13,7 +13,7 @@ export const ratingIDs = {
     6: "rx",
 }
 
-export const genresIDs = {
+export const genresNames = {
     1: "Action",
     2: "Adventure",
     5: "Avant Garde",
@@ -92,7 +92,7 @@ export const genresIDs = {
     27: "Shounen",
 }
 
-export const relationIDs = {
+export const relationsNames = {
     1: "sequel",
     2: "side story",
     3: "summary",
@@ -102,3 +102,8 @@ export const relationIDs = {
     7: "prequel",
     8: "parent story",
 }
+
+export type statusID = keyof typeof statusesNames;
+export type ratingID = keyof typeof ratingsNames;
+export type genreID = keyof typeof genresNames;
+export type relationID = keyof typeof relationsNames;
