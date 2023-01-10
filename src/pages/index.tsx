@@ -19,9 +19,13 @@ export default function Home() {
   useEffect(() => {
     if (!user.api) {
       const connect = async () => {
-        let res = await try_reconnect()
-        setUser(res)
-        setSessionCheck(true)
+        try {
+          let res = await try_reconnect()
+          setUser(res)
+          setSessionCheck(true)
+        } catch (e) {
+          setSessionCheck(true)
+        }
       }
       connect()
     } else {
