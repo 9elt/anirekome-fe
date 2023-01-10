@@ -1,20 +1,30 @@
 import { useState } from "react"
-import { useRouter } from "next/router";
-
-//  global state
-import { userState } from "src/global-state/user";
-import { useRecoilState } from 'recoil';
-
+// global state
+import { userState } from "src/global-state/user"
+import { useRecoilState } from 'recoil'
+// session
+import { setSession } from "src/session/use"
 // api
-import { formApi } from "src/api/recommendations/get-recomendations";
-import { ApiError } from "src/api/recommendations/get-recomendations";
-import type { formErrors, formStateType } from "./types";
-import { setSession } from "src/session/use";
+import rekoApi from "src/api/recommendations/get-recomendations"
+import { ApiError } from "src/api/recommendations/get-recomendations"
+import type { formValues, formErrors, formStateType } from "./types"
+import type { APIresponse } from "src/api/recommendations/types";
+
+async function formApi(data: formValues): Promise<APIresponse> {
+  return await rekoApi({
+    user_name: data.user_name,
+    next_request: {
+      accuracy: 100,
+      banned_ids: [],
+      banned_users: [],
+      force_list_update: false,
+    }
+  })
+}
 
 export default function useFormState() {
 
   const [user, setUser] = useRecoilState(userState);
-  const router = useRouter();
 
   const init: formStateType = {
     values: {
@@ -92,14 +102,11 @@ export default function useFormState() {
         next_request: res.next_request,
       });
 
-      //router.push('/recommendations');
-
     } catch (e) {
 
       e instanceof ApiError
         ? setError([{ name: 'user_name', msg: e.msg }])
         : console.log(e);
-
     }
   }
 
